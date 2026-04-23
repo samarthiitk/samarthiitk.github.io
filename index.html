@@ -60,7 +60,8 @@
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .card h3 {
@@ -74,13 +75,19 @@
 
     .btn {
       display: inline-block;
-      margin-top: 10px;
-      padding: 8px 14px;
-      background-color: #2563eb;
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      opacity: 0.95;
     }
 
     .skills {
