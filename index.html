@@ -205,20 +205,12 @@
 <div class="footer">
   <p>© 2026 Samarth Singh</p>
 
-  <p id="view-count" style="font-size:12px; color:gray;">Loading views...</p>
-</div>  
+  <p style="font-size:12px; color:gray;">
+    Portfolio views:
+    <img src="https://hits.sh/samarthiitk.github.io.svg?style=flat-square" />
+  </p>
+</div> 
 
-<script>
-fetch('https://api.countapi.xyz/hit/samarthiitk/portfolio')
-  .then(res => res.json())
-  .then(res => {
-    document.getElementById('view-count').innerText =
-      'Portfolio views: ' + res.value;
-  })
-  .catch(() => {
-    document.getElementById('view-count').innerText =
-      'Portfolio views unavailable';
-  });
-</script>
+
 </body>
 </html>
