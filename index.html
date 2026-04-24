@@ -204,7 +204,18 @@
 
 <div class="footer">
   <p>© 2026 Samarth Singh</p>
+
+  <p id="view-count" style="font-size:12px; color:gray;"></p>
 </div>
+
+<script>
+fetch('https://api.countapi.xyz/hit/samarthiitk/portfolio')
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById('view-count').innerText =
+      'Portfolio views: ' + res.value;
+  });
+</script>
 
 </body>
 </html>
