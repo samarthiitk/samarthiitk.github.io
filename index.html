@@ -34,9 +34,13 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #07101f;
-      color: #e5ecff;
+      background: #070d1a;
+      color: #f8fafc;
       line-height: 1.6;
+    }
+
+    body.modal-open {
+      overflow: hidden;
     }
 
     a {
@@ -60,14 +64,12 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(7, 16, 31, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(7, 13, 26, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
     }
 
-    .nav-content {
-      width: min(1120px, 92%);
-      margin: auto;
+    .nav-inner {
       height: 72px;
       display: flex;
       align-items: center;
@@ -77,7 +79,7 @@
     .logo {
       font-size: 18px;
       font-weight: 700;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.5px;
       color: #ffffff;
     }
 
@@ -97,31 +99,90 @@
       color: #ffffff;
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-icon {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      color: #cbd5e1;
-      transition: all 0.2s ease;
+    .contact-nav-btn {
+      border: 1px solid rgba(191, 219, 254, 0.25);
+      background: rgba(191, 219, 254, 0.08);
+      color: #dbeafe;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-family: inherit;
       font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .nav-icon:hover {
-      background: rgba(148, 163, 184, 0.1);
-      color: #ffffff;
+    .contact-nav-btn:hover {
+      background: #bfdbfe;
+      color: #07111f;
       transform: translateY(-2px);
     }
 
-    /* BUTTONS */
+    /* HERO */
+
+    .hero {
+      padding: 96px 0 72px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(96, 165, 250, 0.16), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.12), transparent 26%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(191, 219, 254, 0.35), transparent);
+    }
+
+    .hero-content {
+      max-width: 860px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      color: #bfdbfe;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 86px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      color: #ffffff;
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #bfdbfe;
+    }
+
+    .hero-text {
+      max-width: 720px;
+      color: #cbd5e1;
+      font-size: 18px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 46px;
+    }
 
     .btn {
       display: inline-flex;
@@ -129,334 +190,115 @@
       justify-content: center;
       gap: 8px;
       padding: 13px 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       transition: all 0.22s ease;
       border: 1px solid transparent;
       cursor: pointer;
-      white-space: nowrap;
+      font-family: inherit;
     }
 
     .btn-primary {
-      background: #bcd0ff;
-      color: #07101f;
-      box-shadow: 0 10px 28px rgba(188, 208, 255, 0.18);
+      background: #bfdbfe;
+      color: #07111f;
+      box-shadow: 0 18px 40px rgba(96, 165, 250, 0.18);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      background: #d5e2ff;
+      background: #dbeafe;
     }
 
     .btn-secondary {
-      background: transparent;
-      color: #e5ecff;
-      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.28);
     }
 
     .btn-secondary:hover {
-      background: rgba(148, 163, 184, 0.1);
+      background: rgba(30, 41, 59, 0.9);
       transform: translateY(-3px);
     }
 
-    .btn-small {
-      padding: 10px 14px;
-      font-size: 13px;
-      border-radius: 8px;
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 92px 0 70px;
-      background:
-        radial-gradient(circle at top left, rgba(96, 165, 250, 0.20), transparent 34%),
-        radial-gradient(circle at 70% 20%, rgba(99, 102, 241, 0.18), transparent 30%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      margin-bottom: 22px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.12);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      color: #c7d2fe;
-      font-size: 12px;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .hero h1 {
-      max-width: 760px;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -3px;
-      color: #f8fbff;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 span {
-      color: #bcd0ff;
-    }
-
-    .hero p {
-      max-width: 680px;
-      color: #cbd5e1;
-      font-size: 17px;
-      margin-bottom: 34px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 46px;
-    }
-
-    .hero-card-grid {
+    .quick-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
+      max-width: 840px;
     }
 
-    .mini-card {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 14px;
+    .stat-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 18px;
       padding: 20px;
-      min-height: 120px;
-      transition: transform 0.2s ease, border 0.2s ease;
     }
 
-    .mini-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(188, 208, 255, 0.45);
-    }
-
-    .mini-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      background: rgba(188, 208, 255, 0.1);
-      color: #bcd0ff;
-      margin-bottom: 14px;
-      font-size: 16px;
-    }
-
-    .mini-card h3 {
-      font-size: 18px;
+    .stat-card strong {
+      display: block;
       color: #ffffff;
+      font-size: 20px;
       margin-bottom: 4px;
     }
 
-    .mini-card p {
-      margin: 0;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-
-    .hero-visual {
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.65));
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
-    }
-
-    .dashboard-preview {
-      border-radius: 18px;
-      background:
-        linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(99, 102, 241, 0.12)),
-        #0f172a;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      padding: 22px;
-    }
-
-    .fake-browser {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 18px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(203, 213, 225, 0.35);
-    }
-
-    .metric-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .metric-box {
-      background: rgba(7, 16, 31, 0.65);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      border-radius: 12px;
-      padding: 12px;
-    }
-
-    .metric-box strong {
-      display: block;
-      font-size: 18px;
-      color: #ffffff;
-    }
-
-    .metric-box span {
-      font-size: 11px;
+    .stat-card span {
       color: #94a3b8;
+      font-size: 13px;
     }
 
-    .chart-lines {
-      height: 180px;
-      border-radius: 16px;
-      background:
-        linear-gradient(to top, rgba(188, 208, 255, 0.08), transparent),
-        repeating-linear-gradient(to right, transparent, transparent 38px, rgba(148, 163, 184, 0.08) 39px),
-        repeating-linear-gradient(to bottom, transparent, transparent 38px, rgba(148, 163, 184, 0.08) 39px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .chart-lines::before {
-      content: "";
-      position: absolute;
-      inset: 30px 20px;
-      border-bottom: 3px solid #bcd0ff;
-      border-right: 3px solid transparent;
-      clip-path: polygon(0 70%, 18% 45%, 36% 58%, 54% 28%, 72% 38%, 100% 12%, 100% 100%, 0 100%);
-      background: linear-gradient(to top, rgba(188, 208, 255, 0.22), transparent);
-    }
-
-    /* SECTIONS */
+    /* SECTION COMMON */
 
     .section {
-      padding: 84px 0;
+      padding: 78px 0;
     }
 
     .section-header {
+      margin-bottom: 34px;
       display: flex;
       align-items: end;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 34px;
     }
 
     .section-label {
+      color: #93c5fd;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: #9db7ff;
       font-weight: 700;
       margin-bottom: 8px;
     }
 
     .section h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.12;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.08;
       letter-spacing: -1.4px;
-      color: #f8fbff;
+      color: #ffffff;
     }
 
     .section-subtitle {
-      max-width: 680px;
+      max-width: 720px;
       color: #cbd5e1;
-      margin-top: 14px;
       font-size: 15px;
+      margin-top: 14px;
     }
 
     /* ABOUT */
 
-    .about-section {
-      padding-top: 76px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
     .about-card {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(96, 165, 250, 0.08), transparent),
+        rgba(15, 23, 42, 0.74);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 22px;
       padding: 34px;
     }
 
     .about-card p {
       color: #cbd5e1;
       font-size: 16px;
-      margin-bottom: 18px;
-    }
-
-    .about-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .about-visual {
-      min-height: 330px;
-      border-radius: 24px;
-      padding: 26px;
-      background:
-        linear-gradient(135deg, rgba(188, 208, 255, 0.12), transparent),
-        rgba(15, 23, 42, 0.82);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .insight-panel {
-      width: 100%;
-      background: #091426;
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .insight-panel h3 {
-      color: #ffffff;
-      margin-bottom: 16px;
-      font-size: 18px;
-    }
-
-    .insight-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-      color: #cbd5e1;
-      font-size: 14px;
-    }
-
-    .insight-item:last-child {
-      border-bottom: none;
-    }
-
-    .insight-item strong {
-      color: #bcd0ff;
+      max-width: 960px;
     }
 
     /* PROJECTS */
@@ -464,122 +306,121 @@
     .projects {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 26px;
     }
 
     .project-card {
+      background: rgba(15, 23, 42, 0.76);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 22px;
       overflow: hidden;
-      background: rgba(15, 23, 42, 0.86);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 18px;
-      transition: all 0.22s ease;
+      transition: all 0.24s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(188, 208, 255, 0.38);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+      transform: translateY(-7px);
+      border-color: rgba(191, 219, 254, 0.34);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
     }
 
-    .project-image-wrap {
+    .project-image {
       position: relative;
-      height: 245px;
+      height: 250px;
       overflow: hidden;
       background: #0f172a;
     }
 
-    .project-image-wrap img {
+    .project-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0.9;
       transition: transform 0.35s ease;
-      opacity: 0.88;
     }
 
-    .project-card:hover .project-image-wrap img {
-      transform: scale(1.06);
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
     }
 
     .project-badge {
       position: absolute;
       top: 16px;
       left: 16px;
-      background: rgba(188, 208, 255, 0.92);
-      color: #07101f;
-      padding: 6px 10px;
-      border-radius: 999px;
+      background: rgba(191, 219, 254, 0.95);
+      color: #07111f;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      padding: 6px 10px;
+      border-radius: 999px;
     }
 
-    .project-content {
-      padding: 28px;
+    .project-body {
+      padding: 26px;
     }
 
-    .project-content h3 {
+    .project-body h3 {
       font-size: 22px;
       color: #ffffff;
       margin-bottom: 10px;
     }
 
-    .project-content p {
+    .project-body p {
       color: #cbd5e1;
       font-size: 14px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    .project-stats {
+    .project-metrics {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-bottom: 22px;
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-    .project-stat {
-      background: rgba(7, 16, 31, 0.5);
+    .metric {
+      background: rgba(7, 13, 26, 0.56);
       border: 1px solid rgba(148, 163, 184, 0.12);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 14px;
     }
 
-    .project-stat span {
+    .metric span {
       display: block;
-      font-size: 11px;
       color: #94a3b8;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
     }
 
-    .project-stat strong {
-      color: #ffffff;
+    .metric strong {
       font-size: 18px;
+      color: #ffffff;
     }
 
-    .project-content ul {
+    .project-body ul {
       list-style: none;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
-    .project-content li {
-      position: relative;
-      padding-left: 22px;
+    .project-body li {
       color: #dbe4ff;
       font-size: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
+      padding-left: 20px;
+      position: relative;
     }
 
-    .project-content li::before {
-      content: "◎";
+    .project-body li::before {
+      content: "•";
       position: absolute;
       left: 0;
-      top: 0;
-      color: #bcd0ff;
-      font-size: 13px;
+      color: #93c5fd;
+      font-size: 18px;
+      line-height: 1;
     }
 
-    .tag-row {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -587,172 +428,241 @@
     }
 
     .tag {
-      background: rgba(148, 163, 184, 0.14);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      color: #dbe4ff;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      color: #dbeafe;
       padding: 6px 10px;
-      border-radius: 7px;
+      border-radius: 999px;
       font-size: 11px;
       font-weight: 500;
     }
 
     /* SKILLS */
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .skill-card {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 18px;
-      padding: 28px;
-      transition: all 0.22s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(188, 208, 255, 0.35);
-    }
-
-    .skill-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: rgba(188, 208, 255, 0.1);
-      color: #bcd0ff;
-      margin-bottom: 22px;
-      font-size: 18px;
-    }
-
-    .skill-card h3 {
-      color: #ffffff;
-      font-size: 20px;
-      margin-bottom: 14px;
-    }
-
-    .skills {
+    .skills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
     }
 
     .skill {
-      background: rgba(148, 163, 184, 0.14);
-      color: #dbe4ff;
-      padding: 6px 9px;
-      border-radius: 7px;
-      font-size: 11px;
-      border: 1px solid rgba(148, 163, 184, 0.12);
+      background: rgba(15, 23, 42, 0.76);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      color: #dbeafe;
+      padding: 11px 15px;
+      border-radius: 999px;
+      font-size: 14px;
+      transition: all 0.2s ease;
     }
 
-    /* CONTACT */
+    .skill:hover {
+      background: rgba(191, 219, 254, 0.1);
+      border-color: rgba(191, 219, 254, 0.34);
+      transform: translateY(-2px);
+    }
 
-    .contact-box {
-      background:
-        radial-gradient(circle at top, rgba(188, 208, 255, 0.12), transparent 34%),
-        rgba(15, 23, 42, 0.82);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 22px;
-      padding: 58px 28px;
+    /* CTA */
+
+    .cta {
+      padding: 44px 0 82px;
+    }
+
+    .cta-box {
       text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(96, 165, 250, 0.12), transparent 35%),
+        rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 24px;
+      padding: 54px 28px;
     }
 
-    .contact-box h2 {
+    .cta-box h2 {
       font-size: clamp(30px, 4vw, 44px);
-      margin-bottom: 12px;
-      color: #ffffff;
       letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
 
-    .contact-box p {
+    .cta-box p {
       color: #cbd5e1;
-      max-width: 540px;
+      max-width: 620px;
       margin: 0 auto 28px;
-    }
-
-    .contact-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
     }
 
     /* FOOTER */
 
     .footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.15);
-      padding: 34px 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+      padding: 28px 0;
       color: #94a3b8;
       font-size: 13px;
     }
 
-    .footer-content {
-      width: min(1120px, 92%);
-      margin: auto;
+    .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     .footer strong {
+      color: #ffffff;
       display: block;
-      color: #ffffff;
-      font-size: 16px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
+      font-size: 15px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
+    .footer button {
+      background: none;
+      border: none;
       color: #cbd5e1;
-      transition: color 0.2s ease;
+      font-family: inherit;
+      cursor: pointer;
+      font-size: 13px;
     }
 
-    .footer-links a:hover {
+    .footer button:hover {
       color: #ffffff;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(2, 6, 23, 0.78);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      width: min(460px, 100%);
+      background:
+        linear-gradient(135deg, rgba(96, 165, 250, 0.10), transparent),
+        #0f172a;
+      border: 1px solid rgba(191, 219, 254, 0.22);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+      position: relative;
+      animation: modalUp 0.22s ease;
+    }
+
+    @keyframes modalUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(191, 219, 254, 0.14);
+    }
+
+    .modal h2 {
+      font-size: 28px;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+      padding-right: 42px;
+    }
+
+    .modal p {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .modal-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .modal-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(7, 13, 26, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      color: #f8fafc;
+      transition: all 0.2s ease;
+    }
+
+    .modal-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(191, 219, 254, 0.35);
+      background: rgba(30, 41, 59, 0.75);
+    }
+
+    .modal-link span {
+      display: block;
+      color: #94a3b8;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .modal-link strong {
+      font-size: 15px;
+    }
+
+    .arrow {
+      color: #93c5fd;
     }
 
     /* RESPONSIVE */
 
-    @media (max-width: 900px) {
-      .hero-grid,
-      .about-grid,
-      .projects,
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
+    @media (max-width: 850px) {
+      .nav-links {
         display: none;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-stats {
+        grid-template-columns: 1fr;
       }
 
       .section-header {
         align-items: flex-start;
         flex-direction: column;
       }
-
-      .nav-links {
-        display: none;
-      }
     }
 
-    @media (max-width: 600px) {
-      .nav-content {
+    @media (max-width: 560px) {
+      .nav-inner {
         height: 66px;
       }
 
@@ -760,57 +670,46 @@
         font-size: 16px;
       }
 
-      .nav-actions {
-        gap: 8px;
-      }
-
-      .nav-icon {
-        display: none;
-      }
-
       .hero {
-        padding: 64px 0 54px;
+        padding: 70px 0 56px;
       }
 
       .hero h1 {
-        letter-spacing: -1.8px;
+        letter-spacing: -2px;
       }
 
-      .hero p {
+      .hero-text {
         font-size: 15px;
+      }
+
+      .hero-actions {
+        width: 100%;
       }
 
       .btn {
         width: 100%;
       }
 
-      .hero-actions,
-      .contact-actions {
-        width: 100%;
-      }
-
-      .mini-card,
-      .about-card,
-      .skill-card,
-      .project-content {
-        padding: 22px;
-      }
-
-      .project-image-wrap {
+      .project-image {
         height: 210px;
       }
 
-      .project-stats {
+      .project-metrics {
         grid-template-columns: 1fr;
       }
 
-      .section {
-        padding: 62px 0;
+      .about-card,
+      .project-body,
+      .modal {
+        padding: 22px;
       }
 
-      .footer-content {
-        align-items: flex-start;
-        flex-direction: column;
+      .section {
+        padding: 58px 0;
+      }
+
+      .cta-box {
+        padding: 42px 22px;
       }
     }
   </style>
@@ -820,156 +719,74 @@
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="nav-content">
+    <div class="container nav-inner">
       <a href="#" class="logo">Samarth Singh</a>
 
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
       </div>
 
-      <div class="nav-actions">
-        <a href="mailto:samarths.iitk@gmail.com" class="nav-icon" title="Email">✉</a>
-        <a href="https://github.com/samarthiitk" class="nav-icon" target="_blank" title="GitHub">↗</a>
-        <a href="resume.pdf" class="btn btn-primary btn-small" target="_blank">Resume</a>
-      </div>
+      <button class="contact-nav-btn" onclick="openContactModal()">Contact</button>
     </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Available for Data Analyst Roles</div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge">Available for Data Analyst Roles</div>
 
-        <h1>Transforming Data into <span>Business Intelligence</span></h1>
+        <h1>Turning raw data into <span>clear business insights.</span></h1>
 
-        <p>
-          Data Analyst from IIT Kanpur, focused on SQL, Python, dashboards, funnel analysis,
-          A/B testing, and turning raw data into clear business decisions.
+        <p class="hero-text">
+          Data Analyst from IIT Kanpur with hands-on experience in SQL, Python, dashboards,
+          funnel analysis, A/B testing, and healthcare analytics.
         </p>
 
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">View Projects ↓</a>
-          <a href="mailto:samarths.iitk@gmail.com" class="btn btn-secondary">Contact Me</a>
+          <button class="btn btn-secondary" onclick="openContactModal()">Contact Me</button>
         </div>
 
-        <div class="hero-card-grid">
-          <div class="mini-card">
-            <div class="mini-icon">🎓</div>
-            <h3>IIT Kanpur</h3>
-            <p>Academic Background</p>
+        <div class="quick-stats">
+          <div class="stat-card">
+            <strong>IIT Kanpur</strong>
+            <span>Academic background</span>
           </div>
 
-          <div class="mini-card">
-            <div class="mini-icon">▣</div>
-            <h3>SQL & Python</h3>
-            <p>Data Cleaning, EDA & Reporting</p>
+          <div class="stat-card">
+            <strong>SQL + Python</strong>
+            <span>Core analytics stack</span>
           </div>
 
-          <div class="mini-card">
-            <div class="mini-icon">↗</div>
-            <h3>Analytics</h3>
-            <p>Funnels, KPIs & A/B Testing</p>
+          <div class="stat-card">
+            <strong>Dashboards</strong>
+            <span>Business reporting and insights</span>
           </div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="dashboard-preview">
-          <div class="fake-browser">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-box">
-              <strong>15%</strong>
-              <span>Purchase Journey</span>
-            </div>
-            <div class="metric-box">
-              <strong>44%</strong>
-              <span>Drop-off Rate</span>
-            </div>
-            <div class="metric-box">
-              <strong>10K+</strong>
-              <span>Records Analyzed</span>
-            </div>
-          </div>
-
-          <div class="chart-lines"></div>
         </div>
       </div>
     </div>
   </header>
 
   <!-- ABOUT -->
-  <section class="section about-section" id="about">
-    <div class="container about-grid">
-      <div>
-        <div class="section-label">About Me</div>
-        <h2>Bridging the gap between raw data and actionable insights.</h2>
-        <p class="section-subtitle">
-          I enjoy breaking down business problems, finding patterns in data, and presenting insights
-          in a simple way that helps teams make better decisions.
-        </p>
-      </div>
-
-      <div class="about-card">
-        <p>
-          Data Analyst from IIT Kanpur with experience in SQL and Python, focused on solving
-          business problems through data.
-        </p>
-        <p>
-          Skilled in funnel analysis, A/B testing, KPI tracking, and building dashboards to generate
-          actionable insights.
-        </p>
-        <p>
-          Interested in healthcare analytics, product analytics, data products, and large-scale data systems.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSIGHT PANEL -->
-  <section class="section">
-    <div class="container about-grid">
-      <div class="about-card">
-        <div class="section-label">How I Think</div>
-        <h2>From question to insight.</h2>
-        <p class="section-subtitle">
-          My approach is simple: understand the business question, clean the data, analyze the pattern,
-          and communicate the answer clearly.
-        </p>
-      </div>
-
-      <div class="about-visual">
-        <div class="insight-panel">
-          <h3>Analytics Workflow</h3>
-
-          <div class="insight-item">
-            <span>Business Problem</span>
-            <strong>Define</strong>
-          </div>
-
-          <div class="insight-item">
-            <span>Raw Data</span>
-            <strong>Clean</strong>
-          </div>
-
-          <div class="insight-item">
-            <span>SQL / Python Analysis</span>
-            <strong>Analyze</strong>
-          </div>
-
-          <div class="insight-item">
-            <span>Dashboard / Insights</span>
-            <strong>Present</strong>
-          </div>
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label">About Me</div>
+          <h2>Simple analysis. Clear insights. Better decisions.</h2>
         </div>
+      </div>
+
+      <div class="about-card">
+        <p>
+          I am a Data Analyst from IIT Kanpur focused on solving business problems using data.
+          I work with SQL, Python, Excel, Tableau, and Power BI to clean data, study patterns,
+          build dashboards, and explain insights in a simple way. My interests include product analytics,
+          healthcare analytics, business intelligence, and data products.
+        </p>
       </div>
     </div>
   </section>
@@ -980,53 +797,53 @@
       <div class="section-header">
         <div>
           <div class="section-label">Portfolio</div>
-          <h2>Featured Case Studies</h2>
+          <h2>Featured Projects</h2>
           <p class="section-subtitle">
-            Selected analytics projects showing SQL, Python, dashboards, funnel analysis,
-            A/B testing, and healthcare analytics.
+            Selected projects showing funnel analysis, A/B testing, dashboarding, SQL, Python,
+            and healthcare analytics.
           </p>
         </div>
-
-        <a href="https://github.com/samarthiitk" class="btn btn-secondary btn-small" target="_blank">View All Projects ↗</a>
       </div>
 
       <div class="projects">
 
         <!-- PROJECT 1 -->
         <div class="project-card">
-          <div class="project-image-wrap">
+          <div class="project-image">
             <span class="project-badge">E-commerce</span>
-            <img src="https://raw.githubusercontent.com/samarthiitk/ecommerce-funnel-analysis/main/funnel_final.png"
-                 alt="E-commerce Funnel Analysis chart">
+            <img
+              src="https://raw.githubusercontent.com/samarthiitk/ecommerce-funnel-analysis/main/funnel_final.png"
+              alt="E-commerce Funnel Analysis chart"
+            >
           </div>
 
-          <div class="project-content">
+          <div class="project-body">
             <h3>E-commerce Funnel Analysis</h3>
 
             <p>
-              Analyzed user journey and A/B test results to identify conversion bottlenecks
-              and optimization opportunities.
+              Analyzed the user journey from visit to purchase and compared A/B test results
+              to find conversion bottlenecks.
             </p>
 
-            <div class="project-stats">
-              <div class="project-stat">
-                <span>Conversion A/B</span>
+            <div class="project-metrics">
+              <div class="metric">
+                <span>A/B Conversion</span>
                 <strong>19% vs 10.6%</strong>
               </div>
 
-              <div class="project-stat">
-                <span>Drop-off Rate</span>
+              <div class="metric">
+                <span>Drop-off</span>
                 <strong>~44%</strong>
               </div>
             </div>
 
             <ul>
-              <li>Found a major drop-off from View to Add to Cart stage.</li>
+              <li>Found a major drop-off from View to Add to Cart.</li>
               <li>Only around 15% users completed the full purchase journey.</li>
-              <li>Variant A performed better than Variant B in purchase conversion.</li>
+              <li>Variant A performed better than Variant B.</li>
             </ul>
 
-            <div class="tag-row">
+            <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">Pandas</span>
               <span class="tag">SQL</span>
@@ -1034,7 +851,7 @@
               <span class="tag">Funnel Analysis</span>
             </div>
 
-            <a href="https://github.com/samarthiitk/ecommerce-funnel-analysis" class="btn btn-primary btn-small" target="_blank">
+            <a href="https://github.com/samarthiitk/ecommerce-funnel-analysis" class="btn btn-primary" target="_blank">
               View Project ↗
             </a>
           </div>
@@ -1042,39 +859,41 @@
 
         <!-- PROJECT 2 -->
         <div class="project-card">
-          <div class="project-image-wrap">
+          <div class="project-image">
             <span class="project-badge">Healthcare</span>
-            <img src="https://raw.githubusercontent.com/samarthiitk/Hospital_Mortality_analysis/main/mortality_dashboard.png"
-                 alt="Hospital Mortality Analysis dashboard">
+            <img
+              src="https://raw.githubusercontent.com/samarthiitk/Hospital_Mortality_analysis/main/mortality_dashboard.png"
+              alt="Hospital Mortality Analysis dashboard"
+            >
           </div>
 
-          <div class="project-content">
+          <div class="project-body">
             <h3>Hospital Mortality Analysis</h3>
 
             <p>
-              Developed a healthcare analytics dashboard to evaluate mortality trends across
-              demographics, ICU types, and comorbidities.
+              Built a healthcare analytics dashboard to study mortality trends across age,
+              ICU type, admission source, and comorbidities.
             </p>
 
-            <div class="project-stats">
-              <div class="project-stat">
-                <span>Age Group Risk</span>
+            <div class="project-metrics">
+              <div class="metric">
+                <span>Age Risk</span>
                 <strong>~10% 80+</strong>
               </div>
 
-              <div class="project-stat">
-                <span>Key Risk</span>
-                <strong>Comorbidities</strong>
+              <div class="metric">
+                <span>Records</span>
+                <strong>10,000+</strong>
               </div>
             </div>
 
             <ul>
-              <li>Mortality increases significantly with patient age.</li>
-              <li>ICU type and admission source show variation in survival outcomes.</li>
-              <li>Comorbidities like diabetes and immunosuppression show higher risk.</li>
+              <li>Mortality increased significantly with patient age.</li>
+              <li>ICU type and admission source showed survival variation.</li>
+              <li>Comorbidities showed higher patient risk.</li>
             </ul>
 
-            <div class="tag-row">
+            <div class="tags">
               <span class="tag">Healthcare Analytics</span>
               <span class="tag">SQL</span>
               <span class="tag">Tableau</span>
@@ -1082,7 +901,7 @@
               <span class="tag">Statistics</span>
             </div>
 
-            <a href="https://github.com/samarthiitk/Hospital_Mortality_analysis" class="btn btn-primary btn-small" target="_blank">
+            <a href="https://github.com/samarthiitk/Hospital_Mortality_analysis" class="btn btn-primary" target="_blank">
               View Project ↗
             </a>
           </div>
@@ -1097,96 +916,134 @@
     <div class="container">
       <div class="section-header">
         <div>
-          <div class="section-label">Technical Skills</div>
-          <h2>Toolkit & Expertise</h2>
+          <div class="section-label">Skills</div>
+          <h2>Tools I work with</h2>
           <p class="section-subtitle">
-            Skills I use to clean data, analyze patterns, build dashboards, and communicate business insights.
+            A focused analytics toolkit for data cleaning, reporting, dashboarding,
+            and business analysis.
           </p>
         </div>
       </div>
 
-      <div class="skills-grid">
-
-        <div class="skill-card">
-          <div class="skill-icon">▤</div>
-          <h3>Data & SQL</h3>
-          <div class="skills">
-            <div class="skill">SQL Joins</div>
-            <div class="skill">CTEs</div>
-            <div class="skill">Window Functions</div>
-            <div class="skill">PostgreSQL</div>
-            <div class="skill">MySQL</div>
-            <div class="skill">ETL Pipelines</div>
-            <div class="skill">Data Cleaning</div>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">&lt;/&gt;</div>
-          <h3>Programming</h3>
-          <div class="skills">
-            <div class="skill">Python</div>
-            <div class="skill">Pandas</div>
-            <div class="skill">NumPy</div>
-            <div class="skill">Git</div>
-            <div class="skill">GitHub</div>
-            <div class="skill">Linux</div>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">⌁</div>
-          <h3>Analysis</h3>
-          <div class="skills">
-            <div class="skill">Funnel Analysis</div>
-            <div class="skill">A/B Testing</div>
-            <div class="skill">KPI Analysis</div>
-            <div class="skill">Retention Analysis</div>
-            <div class="skill">Excel Dashboards</div>
-            <div class="skill">Tableau</div>
-            <div class="skill">Power BI</div>
-          </div>
-        </div>
-
+      <div class="skills-wrap">
+        <div class="skill">SQL</div>
+        <div class="skill">Joins</div>
+        <div class="skill">CTEs</div>
+        <div class="skill">Window Functions</div>
+        <div class="skill">PostgreSQL</div>
+        <div class="skill">MySQL</div>
+        <div class="skill">Python</div>
+        <div class="skill">Pandas</div>
+        <div class="skill">NumPy</div>
+        <div class="skill">Excel Dashboards</div>
+        <div class="skill">Tableau</div>
+        <div class="skill">Power BI</div>
+        <div class="skill">Funnel Analysis</div>
+        <div class="skill">A/B Testing</div>
+        <div class="skill">KPI Analysis</div>
+        <div class="skill">ETL Pipelines</div>
+        <div class="skill">Git & GitHub</div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
+  <!-- CTA -->
+  <section class="cta">
     <div class="container">
-      <div class="contact-box">
-        <h2>Ready to dive into the numbers?</h2>
+      <div class="cta-box">
+        <h2>Want to see more?</h2>
         <p>
-          I am currently looking for new opportunities in data analytics,
-          healthcare analytics, product analytics, and business intelligence.
+          You can view my resume, GitHub projects, LinkedIn profile, or contact me directly.
         </p>
 
-        <div class="contact-actions">
-          <a href="mailto:samarths.iitk@gmail.com" class="btn btn-primary">✉ samarths.iitk@gmail.com</a>
-          <a href="https://linkedin.com/in/samarth-singh-iitkanpur" class="btn btn-secondary" target="_blank">LinkedIn Profile</a>
-          <a href="resume.pdf" class="btn btn-secondary" target="_blank">Download Resume</a>
-        </div>
+        <button class="btn btn-primary" onclick="openContactModal()">Open Contact Links</button>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-content">
+    <div class="container footer-inner">
       <div>
         <strong>Samarth Singh</strong>
         <span>© 2026 Samarth Singh. Precision in Analytics.</span>
       </div>
 
-      <div class="footer-links">
-        <a href="https://github.com/samarthiitk" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/samarth-singh-iitkanpur" target="_blank">LinkedIn</a>
-        <a href="mailto:samarths.iitk@gmail.com">Email</a>
-        <a href="resume.pdf" target="_blank">Resume</a>
-      </div>
+      <button onclick="openContactModal()">Contact Links</button>
     </div>
   </footer>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="contactModal" onclick="closeContactModalOnOverlay(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Close contact popup">×</button>
+
+      <h2>Contact & Links</h2>
+      <p>
+        Choose where you want to go next.
+      </p>
+
+      <div class="modal-links">
+
+        <a class="modal-link" href="mailto:samarths.iitk@gmail.com">
+          <div>
+            <strong>Email</strong>
+            <span>samarths.iitk@gmail.com</span>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a class="modal-link" href="resume.pdf" target="_blank">
+          <div>
+            <strong>Resume</strong>
+            <span>Download or view my resume</span>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a class="modal-link" href="https://github.com/samarthiitk" target="_blank">
+          <div>
+            <strong>GitHub</strong>
+            <span>View my projects and code</span>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a class="modal-link" href="https://linkedin.com/in/samarth-singh-iitkanpur" target="_blank">
+          <div>
+            <strong>LinkedIn</strong>
+            <span>Connect with me professionally</span>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openContactModal() {
+      document.getElementById("contactModal").classList.add("active");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeContactModal() {
+      document.getElementById("contactModal").classList.remove("active");
+      document.body.classList.remove("modal-open");
+    }
+
+    function closeContactModalOnOverlay(event) {
+      if (event.target.id === "contactModal") {
+        closeContactModal();
+      }
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeContactModal();
+      }
+    });
+  </script>
 
 </body>
 </html>
